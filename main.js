@@ -1,6 +1,6 @@
 function start(){
     navigator.mediaDevices.getUserMedia({audio:true});
-    classifier = ml5.soundClassifier('https://teachablemachine.withgoogle.com/models/OfcH8BvCn/.json'
+    classifier = ml5.soundClassifier('https://teachablemachine.withgoogle.com/models/OfcH8BvCn/model.json'
     ,modelLoaded);
 }
 function modelLoaded(){
@@ -16,11 +16,8 @@ function gotResults(error , results){
         random_number_g = Math.floor(Math.random()*255)+1;
         random_number_b = Math.floor(Math.random()*255)+1;
 
-        document.getElementById("label").innerHTML = results[0].label;
-        document.getElementById("confidence").innerHTML = (results[0].confidence*100).toFixed(2);
-        document.getElementById("label").style.color = "rgb("+random_number_r+","+random_number_g+","+random_number_b+")";
-        document.getElementById("confidence").style.color = "rgb("+random_number_r+","+random_number_g+","+random_number_b+")";
-
+        document.getElementById("result_label").innerHTML = results[0].label;
+       
         img = document.getElementById("animal_image");
        
 
@@ -33,4 +30,4 @@ function gotResults(error , results){
     }
     else{
         img.src = "giphy (2).gif"; 
-    }
+    }}}
